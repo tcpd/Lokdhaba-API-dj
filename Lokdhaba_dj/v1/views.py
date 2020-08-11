@@ -572,26 +572,27 @@ def get_direct_download_data(request):
             # print('et',electionType)
             stateName = request.GET.get('StateName') #get Election from dict
             assemblyNo = request.GET.get('AssemblyNo') #get AssemblyNo from dict
-            electionType,stateName,assemblyNo = none_checker_val(electionType),none_checker_val(stateName),none_checker_val(assemblyNo)
 
-            if assemblyNo is None:
+            if assemblyNo is None: #checking the value as soon as it is assigned
                 assemblyNo='all'
 
-            assemblyNo = str(assemblyNo)
-            # if electionType==None:
-            #     electionType='all'
-            # if stateName==None:
-            #     stateName='all'
+            if stateName is None: #! if we pass this to a function it doesn't remain as None, and gets assigned a temporary value
+                stateName='all'
 
-            electionType,stateName,assemblyNo = none_checker_val(electionType),none_checker_val(stateName),none_checker_val(assemblyNo)
-            print(electionType,assemblyNo,stateName)
+            if electionType is None:
+                electionType='all'
+            
+            print("\n","e:",electionType,"  s:",stateName,"  a:",assemblyNo)
 
             elections = electionType.split(",")    
             states = stateName.split(",") #
-            assemblies2 = assemblyNo.split(",")
-            assemblies = [ int(str(i)) for i in assemblies2 if i!='all']
-            filename1 = ''
+            assemblies = assemblyNo.split(",")
+            if assemblies[0]!='all':
+                assemblies = [ int(i) for i in assemblies]
+                print("assemblies have been changed")
 
+            filename1 = ''
+            print('el_list:',elections,' ','st_list: ',states,"  assemblies: ",assemblies,'\n')
             # if electionType==None:
             #     x = Mastersheet.objects
             #     q1 = x.values_list() # tuple of values returned
@@ -642,6 +643,7 @@ def get_direct_download_data(request):
                 filename1 = filename1 + electionnames + '-elections_'  + statenames + '-states_' + ','.join([str(i) for i in assemblies]) + '-assemblies'
             
             filename1 = filename1.replace("'","")
+            
             # print('an', assemblyNo)
             # if assemblyNo is None:
             #     assemblyNo = []
@@ -840,3 +842,4 @@ if __name__ == "__main__":
     # x = x.values()
     # x = x.values()
     data = serializers.serialize('json', x)
+
