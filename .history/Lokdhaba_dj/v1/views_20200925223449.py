@@ -546,9 +546,9 @@ def get_static_data(request):
             # return serve(request,p)
             return render(request,'index.html')   
 
-# @csrf_exempt
-# def get_docs(request):  
-#     return render(request,'index.html')   
+@csrf_exempt
+def get_docs(request):  
+    return render(request,'index.html')   
 
 @csrf_exempt
 class Echo:

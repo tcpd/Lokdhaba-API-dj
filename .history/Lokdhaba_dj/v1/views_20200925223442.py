@@ -543,12 +543,12 @@ def get_static_data(request):
          if request.method == 'GET':
             p = BASE_DIR+'/static/India_PC_json.geojson'
             
-            # return serve(request,p)
-            return render(request,'index.html')   
+            return serve(request,p)
+                return render(request,'index.html')   
 
-# @csrf_exempt
-# def get_docs(request):  
-#     return render(request,'index.html')   
+@csrf_exempt
+def get_docs(request):  
+    return render(request,'index.html')   
 
 @csrf_exempt
 class Echo:
