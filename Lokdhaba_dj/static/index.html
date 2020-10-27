@@ -21,7 +21,7 @@
     <body>
         <div class="left-menu">
             <div class="content-logo">
-                <span id = 'title1'>Lokdhaba API Documentation</span>
+                <span id = 'title1'>LokDhaba API Documentation</span>
             </div>
             <div class="content-menu">
                 <ul>
@@ -56,7 +56,7 @@
                     <pre>
     API Endpoint
 
-        http://api.lokdhaba.com/
+      http://lokdhaba.ashoka.edu.in/apiDj/v1/
                 </pre>
                     <p>
                         The Lokdhaba API provides programmatic access to the lokdhaba-website. Directly download data, while specifying the parameters you need. The API also provides easy access to the rich visualizations served by the website.                    </p>
@@ -71,7 +71,7 @@
 
 # Here is a curl example
 curl -X GET \
-  'http://0.0.0.0:8000/v1/DirectDownload/?ElectionType=GE&StateName=Delhi&AssemblyNo=3' \
+  'http://lokdhaba.ashoka.edu.in/apiDj/v1/DirectDownload/?ElectionType=GE&StateName=Delhi&AssemblyNo=3' \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
 
@@ -79,7 +79,7 @@ curl -X GET \
 #Here is a python3 example
     import requests
 
-    url = "http://0.0.0.0:8000/v1/DirectDownload/"
+    url = "http://lokdhaba.ashoka.edu.in/apiDj/v1/DirectDownload/"
     querystring = {"ElectionType":"GE","StateName":"Delhi","AssemblyNo":"3"}
     headers = {
         'content-type': "application/json",
@@ -93,7 +93,7 @@ curl -X GET \
                 </code></pre>
                     <p>
                         To download data you need to make a POST call to the following url :<br>
-                        <code class="higlighted">http://api.lokdhaba.com/</code>
+                        <code class="higlighted">http://lokdhaba.ashoka.edu.in/apiDj/v1/DirectDownload/</code>
                     </p>
                     <br>
                     <pre><code class="scrollbar python3">
@@ -152,13 +152,13 @@ GE,Delhi,3,1,1962,2,0,1,1,MEHR CHAND KHANNA,M,INC,96264,,169912,268661,NEW DELHI
 
 
                 <div class="overflow-hidden content-section" id="content-get-viz">
-                    <h2 id="get-viz">Get Vizualization Data</h2>
+                    <h2 id="get-viz">Get Visualization Data</h2>
                     
                     <pre><code class=" scrollbar bash ">
 
 # Here is a curl example
 curl -X POST \
-  http://0.0.0.0:8000/v1/getVizData/ \
+http://lokdhaba.ashoka.edu.in/apiDj/v1/getVizData/ \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{"ElectionType":"GE","StateName":"Delhi","ModuleName":"winnerGenderMap","VizType":"Map","AssemblyNo":14,"Party":"","Legends":["Male","Female","Others"]}'
@@ -167,7 +167,7 @@ curl -X POST \
 #Here is a python3 example
     import requests
 
-    url = "http://0.0.0.0:8000/v1/getVizData/"
+    url = "http://lokdhaba.ashoka.edu.in/apiDj/v1/getVizData/"
 
     payload = "{\"ElectionType\":\"GE\",\"StateName\":\"Delhi\",\"ModuleName\":\"winnerGenderMap\",\"VizType\":\"Map\",\"AssemblyNo\":14,\"Party\":\"\",\"Legends\":[\"Male\",\"Female\",\"Others\"]}"
     headers = {
@@ -184,7 +184,7 @@ curl -X POST \
 
                     <p>
                         To access the visualization data you need to make a POST call to the following url :<br>
-                        <code class="higlighted">http://api.lokdhaba.com/</code>
+                        <code class="higlighted">http://lokdhaba.ashoka.edu.in/apiDj/v1/getVizData/</code>
                     </p>
                     <!-- <br>characters> -->
                     <pre><code class="scrollbar json">
@@ -256,7 +256,7 @@ Result example :
 
                         <td>ModuleName</td>
                         <td>Text</td>
-                        <td>Name of vizualization module</td>
+                        <td>Name of visualization module</td>
                         <td>String</td>
                       </tr>
 
@@ -324,9 +324,9 @@ Result example :
                         <!-- <code class="higlighted">http://api.lokdhaba.com/</code> -->
                     </p>
 
-                    <h4>MANDATORY PARAMETERS FOR <b style='color:rgb(92, 245, 245)'>DOWNLOAD DATA</b>:</h4>
-                    <p><b style="font-weight:500">None.</b><br>This functions checks for the supplied parameters and returns a response accrodingly. If one leaves a specific field
-                        blank, for example 'Election_Type', then</p>
+                    <h4>MANDATORY PARAMETERS FOR <b style='color:rgb(121, 63, 99)'>DOWNLOAD DATA</b>:</h4>
+                    <p><b style="font-weight:500">None.</b><br>This functions checks for the supplied parameters and returns a response accordingly. If one leaves a specific field
+                        blank, for example 'Election_Type', then the response contains all election data, with respect to other parameters provided.</p>
                     <br>
                     <pre><code class="scrollbar json">
 
@@ -335,10 +335,10 @@ Result example :
 
 
                 </code></pre>
-                    <h4>MANDATORY PARAMETERS FOR <b style='color:rgb(92, 245, 245)'>GET VIZUALISATION DATA:</b></h4>
+                    <h4>MANDATORY PARAMETERS FOR <b style='color:rgb(121, 63, 99)'>GET VISUALIZATION DATA:</b></h4>
                     <p>To access visualization data one needs to supply the requisite paramaters in the POST request
                         to get a successful response. The parameters needed for the getting viz data, are listed below.
-                        These params are necessary because each vizualization is mapped to a specific set of parameters.
+                        These params are necessary because each visualization is mapped to a specific set of parameters.
 
                     </p>
                     <table>
@@ -374,7 +374,7 @@ Result example :
 
                         <td>ModuleName</td>
                         <td>Text</td>
-                        <td>Name of vizualization module</td>
+                        <td>Name of visualisation module</td>
                         <td>String</td>
                       </tr>
 
@@ -409,11 +409,122 @@ Result example :
             
             </code></pre>
             <h4>PARAMETER INFO</h4>
+
+            <p>Parameters such as <b>ModuleName</b> can be chosen from a variety of options available below. </p>
+            <table class="table table-bordered table-hover table-condensed">
+              <thead><tr><th title="Field #1">title</th>
+              <th title="Field #2">modulename</th>
+              <th title="Field #3">alloptionschecked</th>
+              <th title="Field #4">vizComponent</th>
+              </tr></thead>
+              <tbody><tr>
+              <td>Chart: Voter Turnout</td>
+              <td>voterTurnoutChart</td>
+              <td>true</td>
+              <td>VoterTurnoutChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Party vote share (contested)</td>
+              <td>cvoteShareChart</td>
+              <td>false</td>
+              <td>PartyVoteShareChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Party vote share (all seats)</td>
+              <td>tvoteShareChart</td>
+              <td>false</td>
+              <td>PartyVoteShareChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Party seat share</td>
+              <td>seatShareChart</td>
+              <td>false</td>
+              <td>PartySeatShareChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Party strike rate</td>
+              <td>strikeRateChart</td>
+              <td>false</td>
+              <td>PartyStrikeRateChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Parties contested and represented</td>
+              <td>partiesPresentedChart</td>
+              <td>true</td>
+              <td>PartiesPresentedChart</td>
+              </tr>
+              <tr>
+              <td>Chart: Candidates contested /deposit lost</td>
+              <td>contestedDepositSavedChart</td>
+              <td>true</td>
+              <td>ContestedDepositLostChart</td>
+              </tr>
+              <tr>
+              <td>Map: Constituency type</td>
+              <td>winnerCasteMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Number of candidates</td>
+              <td>numCandidatesMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Voter Turnout</td>
+              <td>voterTurnoutMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Winners by Party</td>
+              <td>winnerMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Winners by Gender</td>
+              <td>winnerGenderMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Victory Margin</td>
+              <td>winnerMarginMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Vote share of winners</td>
+              <td>winnerVoteShareMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Party-wise positions</td>
+              <td>partyPositionsMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: Party-wise VoteShare</td>
+              <td>partyVoteShareMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              <tr>
+              <td>Map: NOTA Vote</td>
+              <td>notaTurnoutMap</td>
+              <td>true</td>
+              <td> </td>
+              </tr>
+              </tbody></table>
+            
             <p>Parameters such as <b style="font-weight: 500;">Assembly_No</b> are associated with certain years for every state in India.<br>
                 <br>
                  The following is a list of mappings
-                 from Assembly_No to the <i>years,states</i> in India.<br> These provide an insight to
-                the user on what kind of Assembly_No they might require, and whether data is available for that specific number. </p>
+                 from Assembly_No to the <i>years,states</i> in India.<br> The mapping provides the years for which data is available for each of the states. The values for State_Name and Assembly_No should be selected accordingly. </p>
                 <table border="1" class="dataframe">
                     <thead>
                       <tr style="text-align: right;">
