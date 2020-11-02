@@ -1,5 +1,5 @@
 # Lokdhaba-API-dj
-API to fetch data from Lokdhaba
+API to fetch data from LokDhaba
 
 The following needs to be included in the docker compose files
 '''
