@@ -59,7 +59,7 @@
       http://lokdhaba.ashoka.edu.in/apiDj/v1/
                 </pre>
                     <p>
-                        The Lokdhaba API provides programmatic access to the lokdhaba-website. Directly download data, while specifying the parameters you need. The API also provides easy access to the rich visualizations served by the website.                    </p>
+                        The LokDhaba API provides programmatic access to the LokDhaba-website. Directly download data, while specifying the parameters you need. The API also provides easy access to the rich visualizations served by the website.                    </p>
                     <p>
                         The API can be accessed by anyone without an API-key. 
                     </p>
@@ -92,7 +92,7 @@ curl -X GET \
   
                 </code></pre>
                     <p>
-                        To download data you need to make a POST call to the following url :<br>
+                        To download data directly you need to make a GET call to the following url :<br>
                         <code class="higlighted">http://lokdhaba.ashoka.edu.in/apiDj/v1/DirectDownload/</code>
                     </p>
                     <br>
@@ -150,6 +150,147 @@ GE,Delhi,3,1,1962,2,0,1,1,MEHR CHAND KHANNA,M,INC,96264,,169912,268661,NEW DELHI
 
 
 
+<!-- extra -->
+
+<div class="overflow-hidden content-section" id="content-get-characters">
+  <h2 id="get-characters">  DATA DOWNLOAD (POST) </h2>
+  
+  <pre><code class=" scrollbar bash ">
+
+# Here is a curl example
+curl -X POST \
+  https://lokdhaba.ashoka.edu.in/apiDj/v1/DataDownload/ \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 9a7c3150-6e19-987b-eada-b59dbced38e0' \
+  -d '{"ElectionType":"AE","StateName":"Delhi","AssemblyNo":"3","Filters":[{"id":"Sex","value":"M"}],"SortOptions":[]}'
+
+#Here is a python3 example
+import requests
+
+url = "https://lokdhaba.ashoka.edu.in/apiDj/v1/DataDownload/"
+
+payload = "{\"ElectionType\":\"AE\",\"StateName\":\"Delhi\",\"AssemblyNo\":\"3\",\"Filters\":[{\"id\":\"Sex\",\"value\":\"M\"}],\"SortOptions\":[]}"
+headers = {
+    'content-type': "application/json",
+    'cache-control': "no-cache",
+    'postman-token': "c8a4b80b-b7ab-71c4-66d3-ec2dc182731d"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+</code></pre>
+  <p>
+      To download data directly you need to make a POST call to the following url :<br>
+      <code class="higlighted">http://lokdhaba.ashoka.edu.in/apiDj/v1/DataDownload/</code>
+  </p>
+  <br>
+  <pre><code class="scrollbar python3">
+
+
+
+Result example :
+[
+    {
+        "Election_Type": "AE",
+        "State_Name": "Delhi",
+        "Assembly_No": 3,
+        "Constituency_No": 1,
+        "Year": 1977,
+        "month": 10,
+        "Poll_No": 0,
+        "DelimID": 3,
+        "Position": 1,
+        "Candidate": "P.N. SINGH",
+        "Sex": "M",
+        "Party": "JNP",
+        "Votes": 8719,
+        "Candidate_Type": null,
+        "Valid_Votes": 13452,
+        "Electors": 33122,
+        "Constituency_Name": "SAROJINI NAGAR",
+        "Constituency_Type": "GEN",
+        "Sub_Region": null,
+        "N_Cand": 5,
+        "Turnout_Percentage": "40.61",
+        "Vote_Share_Percentage": "64.82",
+        "Deposit_Lost": "no",
+        "Margin": 5472,
+        "Margin_Percentage": "40.68",
+        "ENOP": 2.04,
+        "pid": "AEDL106144",
+        "Party_Type_TCPD": null,
+        "Party_ID": null,
+        "last_poll": "TRUE",
+        "Contested": 2,
+        "Last_Party": "INC",
+        "Last_Party_ID": null,
+        "Last_Constituency_Name": "SAROJINI NAGAR",
+        "Same_Constituency": "TRUE",
+        "Same_Party": "FALSE",
+        "No_Terms": 2,
+        "Turncoat": "TRUE",
+        "Incumbent": "TRUE",
+        "Recontest": "TRUE",
+        "Age": null,
+        "District_Name": null
+    }, ...]
+
+</code></pre>
+  <h4>QUERY PARAMETERS</h4>
+  <table>
+      <thead>
+          <tr>
+              <th>Field</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Datatype</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+              <td>ElectionType</td>
+              <td>Text</td>
+              <td> Election type of the query(s)</td>
+              <td>String</td>
+          </tr>
+          <tr>
+              <td>StateName</td>
+              <td>Text</td>
+              <td>State name of the query(s)</td>
+              <td>String</td>
+          </tr>
+          <tr>
+              <td>AssemblyNo</td>
+              <td>Number</td>
+              <td>Assembly number of the query(s).</td>
+              <td>String</td>
+          </tr>
+      <tr>
+
+      <td>Filters</td>
+      <td>Number</td>
+      <td>Filter type  of the query(s).</td>
+      <td>String</td>
+    </tr>
+
+      </tbody>
+  </table>                    
+</div>
+
+
+
+
+
+
+
+<!-- extra-->
+
+
+
+
+
 
                 <div class="overflow-hidden content-section" id="content-get-viz">
                     <h2 id="get-viz">Get Visualization Data</h2>
@@ -183,7 +324,7 @@ http://lokdhaba.ashoka.edu.in/apiDj/v1/getVizData/ \
                 </code></pre>
 
                     <p>
-                        To access the visualization data you need to make a POST call to the following url :<br>
+                        To access the visualization data you need to make a GET call to the following url :<br>
                         <code class="higlighted">http://lokdhaba.ashoka.edu.in/apiDj/v1/getVizData/</code>
                     </p>
                     <!-- <br>characters> -->

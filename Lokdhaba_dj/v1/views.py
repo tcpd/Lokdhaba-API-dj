@@ -234,14 +234,14 @@ def get_download_data(request):
             assemblyNo = received_json_data.get('AssemblyNo') #get AssemblyNo from dict
             # print('an', assemblyNo)
 
-            pageNo = int(received_json_data.get('PageNo')) #get PageNO from dict
+            # pageNo = int(received_json_data.get('PageNo')) #get PageNO from dict
 
-            pageSize = int(received_json_data.get('PageSize')) #get PageSize from dict
+            # pageSize = int(received_json_data.get('PageSize')) #get PageSize from dict
             
             filters = received_json_data.get('Filters') ##get Filters from dict
             print("filters", filters)
 
-            StartIndex = pageNo * pageSize
+            # StartIndex = pageNo * pageSize
 
             cursor = db_cursor
             assemblies = assemblyNo.split(",")
